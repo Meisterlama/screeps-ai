@@ -1,4 +1,4 @@
-import "./roles";
+import * as roles from "./roles/roles";
 import * as Spawner from "./spawner";
 
 export function loop(): void {
