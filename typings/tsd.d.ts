@@ -3,10 +3,10 @@ interface Creep {
 }
 
 interface CreepMemory {
-  role: string;
-  building: boolean;
-  needResource: boolean;
-  node: Source;
+  role: string | undefined;
+  building?: boolean | undefined;
+  needResource?: boolean | undefined;
+  node?: Source | undefined;
 }
 
 interface RoomMemory {
