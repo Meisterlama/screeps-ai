@@ -1,0 +1,30 @@
+{
+  "name": "screeps-ai",
+  "version": "1.0.0",
+  "description": "The ai I use in screeps",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "eslint-plugin-screeps": "^2.0.0",
+    "screeps": "^4.1.6"
+  },
+  "devDependencies": {
+    "grunt": "^1.1.0",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-nodeunit": "^2.1.0",
+    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-screeps": "^1.4.0"
+  },
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Misterlama/screeps-ai.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Misterlama/screeps-ai/issues"
+  },
+  "homepage": "https://github.com/Misterlama/screeps-ai#readme"
+}
