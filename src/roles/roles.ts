@@ -1,5 +1,6 @@
 import * as Harvester from "./roles.harvester";
 import * as Builder from "./roles.builder";
+import * as Upgrader from "./roles.upgrader";
 
 Creep.prototype.run = function() {
   if (this.memory.role === "harvester") {
@@ -8,7 +9,5 @@ Creep.prototype.run = function() {
     Builder.run(this);
   } else if (this.memory.role === "upgrader") {
     Upgrader.run(this);
-  } else if (this.memory.role === "pillager") {
-    Pillager.run(this);
   }
 };
