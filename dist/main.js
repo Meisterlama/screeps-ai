@@ -1,7 +1,7 @@
 var roles = require("roles");
 var stat = require("stat");
 var spawner = require("spawner");
-//privet
+
 /**
  * Clear creeps unused in memory
  */
@@ -99,12 +99,6 @@ module.exports.loop = function() {
   for (let roomId in Game.rooms) {
     clearCreeps();
     updatePop(roomId, "Spawn1");
-    // switch (Game.rooms[roomId].controller.level) {
-    //   case 2:
-    //     construct(STRUCTURE_CONTAINER, roomId, "Spawn1");
-    //   default:
-    //     break;
-    // }
   }
 
   // var tower = Game.getObjectById('040f615dc0a28e986ff243c9');
