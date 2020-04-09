@@ -1,4 +1,3 @@
-import * as _ from "underscore";
 export function trySpawnCreep(
   role: string,
   attributes: BodyPartConstant[],
@@ -24,4 +23,31 @@ export function trySpawnCreep(
     }
   }
   return false;
+}
+
+export function clearCreeps(): void {
+  for (let name in Memory.creeps) {
+    console.log("clearing creeps");
+    delete Memory.creeps[name];
+  }
+}
+
+export function updatePop(roomId: string): void {
+  var controller = Game.rooms[roomId].controller;
+  var controllerLevel = 0;
+  if (controller) controllerLevel = controller.level;
+  for (var spawner in Game.spawns) {
+    switch (controllerLevel) {
+      case 2:
+        trySpawnCreep("harvester", [WORK, WORK, CARRY, MOVE], 6, spawner);
+        trySpawnCreep("builder", [WORK, CARRY, MOVE], 3, spawner);
+      case 1:
+        trySpawnCreep("harvester", [WORK, CARRY, MOVE], 3, spawner);
+        trySpawnCreep("upgrader", [WORK, CARRY, MOVE], 2, spawner);
+        break;
+
+      default:
+        break;
+    }
+  }
 }
