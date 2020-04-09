@@ -3,6 +3,7 @@ interface Creep {
 }
 
 interface CreepMemory {
+  role: string;
   building: boolean;
   needResource: boolean;
   node: Source;
