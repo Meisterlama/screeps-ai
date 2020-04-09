@@ -1,3 +1,7 @@
+interface Creep {
+  run(): void;
+}
+
 interface CreepMemory {
-  role: string;
+  building: boolean;
 }
