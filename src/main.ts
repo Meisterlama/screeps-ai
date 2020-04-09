@@ -1,4 +1,4 @@
-import * as roles from "./roles/roles";
+import * as Roles from "./roles/roles";
 import * as Spawner from "./spawner";
 
 export function loop(): void {
@@ -9,6 +9,6 @@ export function loop(): void {
 
   for (let name in Game.creeps) {
     var creep = Game.creeps[name];
-    creep.run();
+    Roles.run(creep);
   }
 }
