@@ -4,18 +4,32 @@
   "description": "The ai I use in screeps",
   "main": "Gruntfile.js",
   "dependencies": {
-    "eslint-plugin-screeps": "^2.0.0",
-    "screeps": "^4.1.6"
+    "eslint-plugin-screeps": "^2.0.0"
   },
   "devDependencies": {
+    "@types/screeps": "^3.1.0",
+    "@types/underscore": "^1.9.4",
     "grunt": "^1.1.0",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-nodeunit": "^2.1.0",
     "grunt-contrib-uglify": "^4.0.1",
-    "grunt-screeps": "^1.4.0"
+    "grunt-screeps": "^1.4.0",
+    "javascript-obfuscator": "^0.27.2",
+    "rollup": "^2.3.4",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-progress": "^1.1.1",
+    "rollup-plugin-screeps": "^0.1.2",
+    "rollup-plugin-typescript2": "^0.27.0",
+    "tslint": "^6.1.1",
+    "typedoc": "^0.17.4",
+    "typescript": "^3.8.3"
   },
   "scripts": {
-    "test": "tap test/*.js"
+    "build": "tsc -p .",
+    "lint": "tslint \"src/**/*.ts\"",
+    "clean": "rm -rf dist && rm -rf dist",
+    "obfuscate": "tsc && javascript-obfuscator tsc-out/Overmind.js --output src/Overmind_obfuscated.js --compact false --self-defending true --string-array true --string-array-threshold 1 --string-array-encoding true && javascript-obfuscator tsc-out/assimilation/Assimilator.js --output src/assimilation/Assimilator_obfuscated.js --compact false --self-defending true --string-array true --string-array-threshold 1 --string-array-encoding true"
   },
   "repository": {
     "type": "git",
