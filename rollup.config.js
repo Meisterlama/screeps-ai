@@ -22,7 +22,7 @@ export default {
   ],
   treeshake: false,
   output: {
-    file: "dist/bundle.js",
+    file: "dist/main.js",
     format: "cjs",
     sourcemap: false
   }
