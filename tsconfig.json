@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "module": "esnext",
-    "lib": ["esnext"],
+    "module": "commonjs",
+    "lib": ["esnext", "dom"],
+    "types": ["underscore", "screeps"],
     "target": "es2017",
     "moduleResolution": "Node",
     "newLine": "CRLF",
