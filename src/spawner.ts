@@ -1,5 +1,4 @@
 import * as _ from "underscore";
-
 export function trySpawnCreep(
   role: string,
   attributes: BodyPartConstant[],
