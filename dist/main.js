@@ -1,7 +1,7 @@
 var roles = require("roles");
 var stat = require("stat");
 var spawner = require("spawner");
-//salut
+
 /**
  * Clear creeps unused in memory
  */
