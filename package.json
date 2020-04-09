@@ -29,6 +29,7 @@
   },
   "scripts": {
     "build": "tsc -p .",
+    "screeps": "npm run build && grunt screeps",
     "clean": "rm -rf dist && rm -rf dist"
   },
   "repository": {

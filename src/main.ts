@@ -1,6 +1,14 @@
 import "./roles";
-import "./spawner";
+import * as Spawner from "./spawner";
 
 export function loop(): void {
-  console.log("It works");
+  for (var room in Game.rooms) {
+    Spawner.clearCreeps();
+    Spawner.updatePop(room);
+  }
+
+  for (let name in Game.creeps) {
+    var creep = Game.creeps[name];
+    creep.run();
+  }
 }

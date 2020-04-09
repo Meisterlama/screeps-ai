@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "module": "commonjs",
+    "module": "esnext",
     "lib": ["esnext", "dom"],
     "types": ["underscore", "screeps"],
     "target": "es2017",
