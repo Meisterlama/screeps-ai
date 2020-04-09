@@ -18,7 +18,8 @@
     "allowUnusedLabels": true,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
-    "removeComments": false
+    "removeComments": false,
+    "allowUmdGlobalAccess": true
   },
   "include": ["src/**/*", "typings/*.d.ts"],
   "exclude": ["node_modules"],
