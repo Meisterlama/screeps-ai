@@ -97,7 +97,7 @@ export function goBuild(creep: Creep) {
 
 function findNode(nodes: Source[], limit: boolean) {
   if (nodes.length === 0) return false;
-  if (!Memory.nodes) Memory.nodes = [];
+  if (!Memory.nodes) Memory.nodes = {};
   var idx = 0;
   while (idx < nodes.length) {
     if (!Memory.nodes[nodes[idx].id]) {
