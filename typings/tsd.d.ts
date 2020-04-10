@@ -16,3 +16,7 @@ interface RoomMemory {
 interface Structure {
   store: Store;
 }
+
+interface Memory {
+  nodes: Array;
+}

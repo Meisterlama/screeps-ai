@@ -55,7 +55,7 @@ export function goHarvest(
   if (creep.store.getFreeCapacity(resource) === 0) return false;
   if (!creep.memory.node) {
     var nodes = creep.room.find(FIND_SOURCES);
-    var node = findNode(creep, nodes, limit);
+    var node = findNode(nodes, limit);
     if (!node) return false;
     creep.memory.node = node;
   }
@@ -95,19 +95,19 @@ export function goBuild(creep: Creep) {
   }
 }
 
-function findNode(creep: Creep, nodes: Source[], limit: boolean) {
+function findNode(nodes: Source[], limit: boolean) {
   if (nodes.length === 0) return false;
-  if (!creep.room.memory.nodes) creep.room.memory.nodes = [];
+  if (!Memory.nodes) Memory.nodes = [];
   var idx = 0;
   while (idx < nodes.length) {
-    if (!creep.room.memory.nodes[nodes[idx].id]) {
+    if (!Memory.nodes[nodes[idx].id]) {
       if (limit) {
-        creep.room.memory.nodes[nodes[idx].id] = 1;
+        Memory.nodes[nodes[idx].id] = 1;
       }
       return nodes[idx];
-    } else if (creep.room.memory.nodes[nodes[idx].id] < 3) {
+    } else if (Memory.nodes[nodes[idx].id] < 3) {
       if (limit) {
-        creep.room.memory.nodes[nodes[idx].id] += 1;
+        Memory.nodes[nodes[idx].id] += 1;
       }
       return nodes[idx];
     }

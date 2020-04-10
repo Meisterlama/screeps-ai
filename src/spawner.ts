@@ -28,7 +28,7 @@ function trySpawnCreep(
 export function clearCreeps(): void {
   for (let name in Memory.creeps) {
     if (!Game.creeps[name]) {
-      if (Memory.creeps[name].node) {
+      if ((Memory.creeps[name].role = "harvester")) {
         Memory.creeps[name].node!.room.memory.nodes[
           Memory.creeps[name].node!.id
         ];
