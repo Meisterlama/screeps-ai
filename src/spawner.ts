@@ -16,7 +16,7 @@ function trySpawnCreep(
         }) === 0
       ) {
         Game.spawns[spawnerId].spawnCreep(attributes, `${role}-${Game.time}`, {
-          memory: { role: role }
+          memory: { role: role, node: null }
         });
         return true;
       }
@@ -28,6 +28,11 @@ function trySpawnCreep(
 export function clearCreeps(): void {
   for (let name in Memory.creeps) {
     if (!Game.creeps[name]) {
+      if (Memory.creeps[name].node) {
+        Memory.creeps[name].node!.room.memory.nodes[
+          Memory.creeps[name].node!.id
+        ];
+      }
       console.log("clearing creeps");
       delete Memory.creeps[name];
     }

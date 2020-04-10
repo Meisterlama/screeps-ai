@@ -100,14 +100,14 @@ function findNode(creep: Creep, nodes: Source[], limit: boolean) {
   if (!creep.room.memory.nodes) creep.room.memory.nodes = [];
   var idx = 0;
   while (idx < nodes.length) {
-    if (!creep.room.memory.nodes[idx]) {
+    if (!creep.room.memory.nodes[nodes[idx].id]) {
       if (limit) {
-        creep.room.memory.nodes[idx] = 1;
+        creep.room.memory.nodes[nodes[idx].id] = 1;
       }
       return nodes[idx];
-    } else if (creep.room.memory.nodes[idx] < 3) {
+    } else if (creep.room.memory.nodes[nodes[idx].id] < 3) {
       if (limit) {
-        creep.room.memory.nodes[idx] += 1;
+        creep.room.memory.nodes[nodes[idx].id] += 1;
       }
       return nodes[idx];
     }

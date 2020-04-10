@@ -6,7 +6,7 @@ interface CreepMemory {
   role: string | undefined;
   building?: boolean | undefined;
   needResource?: boolean | undefined;
-  node?: Source | undefined;
+  node: Source | null;
 }
 
 interface RoomMemory {
