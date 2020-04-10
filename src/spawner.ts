@@ -28,8 +28,8 @@ function trySpawnCreep(
 export function clearCreeps(): void {
   for (let name in Memory.creeps) {
     if (!Game.creeps[name]) {
-      if ((Memory.creeps[name].role = "harvester")) {
-        Memory.nodes[Memory.creeps[name].node!.id];
+      if (Memory.creeps[name].role === "harvester") {
+        Memory.nodes[Memory.creeps[name].node!.id] -= 1;
       }
       console.log(`clearing creep: ${name}`);
       delete Memory.creeps[name];
@@ -44,11 +44,9 @@ export function updatePop(roomId: string): void {
   for (var spawner in Game.spawns) {
     switch (controllerLevel) {
       case 2:
-        if (trySpawnCreep("harvester", [WORK, WORK, CARRY, MOVE], 6, spawner))
-          break;
+        if (trySpawnCreep("harvester", [WORK, CARRY, MOVE], 6, spawner)) break;
         if (trySpawnCreep("builder", [WORK, CARRY, MOVE], 3, spawner)) break;
       case 1:
-        if (trySpawnCreep("harvester", [WORK, CARRY, MOVE], 3, spawner)) break;
         if (trySpawnCreep("upgrader", [WORK, CARRY, MOVE], 3, spawner)) break;
         break;
 
