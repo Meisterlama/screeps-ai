@@ -15,7 +15,7 @@ export function goGetResource(
   if (targets.length > 0) {
     if (creep.withdraw(targets[0], resource) == ERR_NOT_IN_RANGE) {
       creep.moveTo(targets[0], {
-        visualizePathStyle: { stroke: "#ffffff" }
+        visualizePathStyle: { stroke: "#00ff00" }
       });
       return true;
     }
@@ -39,7 +39,7 @@ export function goStoreResource(
   if (targets.length > 0) {
     if (creep.transfer(targets[0], resource) == ERR_NOT_IN_RANGE) {
       creep.moveTo(targets[0], {
-        visualizePathStyle: { stroke: "#ffffff" }
+        visualizePathStyle: { stroke: "#ff000" }
       });
       return true;
     }
@@ -63,10 +63,36 @@ export function goHarvest(
   if (!object) return false;
   if (creep.harvest(object) == ERR_NOT_IN_RANGE) {
     creep.moveTo(object, {
-      visualizePathStyle: { stroke: "#ffaa00" }
+      visualizePathStyle: { stroke: "#00ffff" }
     });
   }
   return true;
+}
+export function goPillage(creep: Creep) {
+  var targets = creep.room.find(FIND_RUINS, {
+    filter: (structure: Structure) => {
+      return structure.store.getUsedCapacity() > 0;
+    }
+  });
+  if (targets.length > 0) {
+    if (creep.withdraw(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(targets[0], {
+        visualizePathStyle: { stroke: "#ffffff" }
+      });
+      return true;
+    }
+  } else {
+    var newtargets = creep.room.find(FIND_DROPPED_RESOURCES);
+    if (targets.length > 0) {
+      if (creep.pickup(newtargets[0]) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(targets[0], {
+          visualizePathStyle: { stroke: "#ffffff" }
+        });
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 export function goUpgradeController(creep: Creep) {
