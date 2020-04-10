@@ -27,7 +27,7 @@ export function goStoreResource(
   creep: Creep,
   resource: ResourceConstant
 ): boolean {
-  var targets = creep.room.find(FIND_MY_STRUCTURES, {
+  var targets = Game.spawns["Spawn1"].room.find(FIND_MY_STRUCTURES, {
     filter: (structure: Structure) => {
       return (
         (structure.structureType == STRUCTURE_EXTENSION ||
@@ -39,7 +39,7 @@ export function goStoreResource(
   if (targets.length > 0) {
     if (creep.transfer(targets[0], resource) == ERR_NOT_IN_RANGE) {
       creep.moveTo(targets[0], {
-        visualizePathStyle: { stroke: "#ff000" }
+        visualizePathStyle: { stroke: "#ff0f0" }
       });
       return true;
     }
@@ -69,29 +69,30 @@ export function goHarvest(
   return true;
 }
 export function goPillage(creep: Creep) {
-  var targets = creep.room.find(FIND_RUINS, {
-    filter: (structure: Structure) => {
-      return structure.store.getUsedCapacity() > 0;
-    }
-  });
-  if (targets.length > 0) {
-    if (creep.withdraw(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-      creep.moveTo(targets[0], {
-        visualizePathStyle: { stroke: "#ffffff" }
-      });
-      return true;
-    }
-  } else {
-    var newtargets = creep.room.find(FIND_DROPPED_RESOURCES);
-    if (targets.length > 0) {
-      if (creep.pickup(newtargets[0]) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(targets[0], {
-          visualizePathStyle: { stroke: "#ffffff" }
+  for (let flag in Game.flags) {
+    if (Game.flags[flag].color === COLOR_ORANGE) {
+      if (Game.flags[flag].room) {
+        var targets = Game.flags["Pillage"].room!.find(FIND_RUINS, {
+          filter: (structure: Structure) => {
+            return structure.store.getUsedCapacity() > 0;
+          }
         });
-        return true;
+        if (targets.length > 0) {
+          if (creep.withdraw(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(targets[0], {
+              visualizePathStyle: { stroke: "#ffffff" }
+            });
+            return true;
+          }
+        }
+      } else {
+        creep.moveTo(Game.flags["Pillage"], {
+          visualizePathStyle: { stroke: "#ff00ff" }
+        });
       }
     }
   }
+
   return false;
 }
 
