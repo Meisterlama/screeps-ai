@@ -53,16 +53,15 @@ export function goHarvest(
   limit = true
 ) {
   if (creep.store.getFreeCapacity(resource) === 0) return false;
-  var nodes = creep.room.find(FIND_SOURCES);
-  var node = findNode(creep, nodes, limit);
-  if (!node) return false;
-  if (!creep.memory.node) creep.memory.node = node;
+  if (!creep.memory.node) {
+    var nodes = creep.room.find(FIND_SOURCES);
+    var node = findNode(creep, nodes, limit);
+    if (!node) return false;
+    creep.memory.node = node;
+  }
   var object = Game.getObjectById(creep.memory.node.id);
   if (!object) return false;
-  if (
-    creep.harvest(object) == ERR_NOT_IN_RANGE &&
-    creep.store.getFreeCapacity() !== 0
-  ) {
+  if (creep.harvest(object) == ERR_NOT_IN_RANGE) {
     creep.moveTo(object, {
       visualizePathStyle: { stroke: "#ffaa00" }
     });
@@ -112,7 +111,7 @@ function findNode(creep: Creep, nodes: Source[], limit: boolean) {
       }
       return nodes[idx];
     }
-    idx = idx + 1;
+    idx += 1;
   }
   return false;
 }
