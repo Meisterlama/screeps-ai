@@ -7,8 +7,9 @@ export function run(creep: Creep) {
     creep.memory.needResource = true;
   }
   if (creep.memory.needResource) {
-    goGetResource(creep, RESOURCE_ENERGY, 200);
-    goHarvest(creep, RESOURCE_ENERGY, false);
+    if (!goGetResource(creep, RESOURCE_ENERGY, 200)) {
+      goHarvest(creep, RESOURCE_ENERGY, false);
+    }
   } else {
     goUpgradeController(creep);
   }
