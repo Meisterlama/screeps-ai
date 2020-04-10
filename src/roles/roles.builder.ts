@@ -1,4 +1,4 @@
-import { goBuild, goGetResource } from "./utils";
+import { goBuild, goGetResource, goHarvest } from "./utils";
 
 export function run(creep: Creep) {
   if (creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
@@ -11,6 +11,8 @@ export function run(creep: Creep) {
   if (creep.memory.building) {
     goBuild(creep);
   } else {
-    goGetResource(creep, RESOURCE_ENERGY, 200);
+    if (!goGetResource(creep, RESOURCE_ENERGY, 200)) {
+      goHarvest(creep, RESOURCE_ENERGY, false);
+    }
   }
 }
