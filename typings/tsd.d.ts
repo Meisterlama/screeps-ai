@@ -19,4 +19,5 @@ interface Structure {
 
 interface Memory {
   nodes: Array;
+  stats: Stats;
 }
