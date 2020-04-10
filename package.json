@@ -29,7 +29,8 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "screeps": "npm run build && grunt screeps",
+    "screeps": "npm run rollup && grunt screeps",
+    "rollup": "rollup -c rollup.config.js",
     "clean": "rm -rf dist && rm -rf dist"
   },
   "repository": {
