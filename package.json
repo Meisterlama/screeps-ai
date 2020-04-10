@@ -29,7 +29,8 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "screeps": "npm run rollup && grunt screeps",
+    "screeps:default": "npm run rollup && grunt screeps --gruntfile GruntDefault.js",
+    "screeps:sim": "npm run rollup && grunt screeps --gruntfile GruntSim.js",
     "rollup": "rollup -c rollup.config.js",
     "clean": "rm -rf dist && rm -rf dist"
   },
