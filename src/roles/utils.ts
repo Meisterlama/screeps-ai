@@ -87,7 +87,7 @@ export function goPillage(creep: Creep) {
           }
         }
       } else {
-        creep.moveTo(Game.flags["Pillage"], {
+        creep.moveTo(Game.flags[flag], {
           visualizePathStyle: { stroke: "#ff00ff" }
         });
       }
