@@ -72,6 +72,7 @@ export function goPillage(creep: Creep) {
   for (let flag in Game.flags) {
     if (Game.flags[flag].color === COLOR_ORANGE) {
       if (Game.flags[flag].room) {
+        // test
         var targets = Game.flags[flag].room!.find(FIND_RUINS, {
           filter: (structure: Structure) => {
             return structure.store.getUsedCapacity() > 0;
