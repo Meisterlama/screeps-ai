@@ -44,10 +44,36 @@ export function updatePop(roomId: string): void {
   for (var spawner in Game.spawns) {
     switch (controllerLevel) {
       case 2:
-        if (trySpawnCreep("harvester", [WORK, CARRY, MOVE], 6, spawner)) break;
-        if (trySpawnCreep("builder", [WORK, CARRY, MOVE], 3, spawner)) break;
+        if (
+          trySpawnCreep(
+            "builder",
+            [WORK, CARRY, MOVE],
+            2 * controllerLevel,
+            spawner
+          )
+        )
+          break;
+        if (trySpawnCreep("pillager", [CARRY, CARRY, MOVE, MOVE], 1, spawner))
+          break;
       case 1:
-        if (trySpawnCreep("upgrader", [WORK, CARRY, MOVE], 3, spawner)) break;
+        if (
+          trySpawnCreep(
+            "harvester",
+            [WORK, CARRY, MOVE],
+            3 * controllerLevel,
+            spawner
+          )
+        )
+          break;
+        if (
+          trySpawnCreep(
+            "upgrader",
+            [WORK, CARRY, MOVE],
+            2 * controllerLevel,
+            spawner
+          )
+        )
+          break;
         break;
 
       default:
