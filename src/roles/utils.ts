@@ -130,7 +130,7 @@ export function goBuild(creep: Creep) {
 
 export function goRepair(creep: Creep) {
   if (creep.store.getUsedCapacity(RESOURCE_ENERGY) === 0) return false;
-  var targets = creep.room.find(FIND_MY_STRUCTURES, {
+  var targets = creep.room.find(FIND_STRUCTURES, {
     filter: (structure: Structure) => {
       return structure.hits / structure.hitsMax < 1;
     }

@@ -10,11 +10,11 @@ export function run(creep: Creep) {
 
   if (creep.memory.building) {
     if (!goRepair(creep)) {
-      goBuild(creep);
-    }
-  } else {
-    if (!goGetResource(creep, RESOURCE_ENERGY, 200)) {
-      goHarvest(creep, RESOURCE_ENERGY, false);
+      if (!goBuild(creep)) {
+        if (!goGetResource(creep, RESOURCE_ENERGY, 200)) {
+          goHarvest(creep, RESOURCE_ENERGY, false);
+        }
+      }
     }
   }
 }
