@@ -69,6 +69,7 @@ export function goHarvest(
   return true;
 }
 export function goPillage(creep: Creep) {
+  if (creep.store.getFreeCapacity() === 0) return false;
   for (let flag in Game.flags) {
     if (Game.flags[flag].color === COLOR_ORANGE) {
       if (Game.flags[flag].room) {
@@ -86,6 +87,7 @@ export function goPillage(creep: Creep) {
             return true;
           }
         }
+        return false;
       } else {
         creep.moveTo(Game.flags[flag], {
           visualizePathStyle: { stroke: "#ff00ff" }
@@ -113,6 +115,7 @@ export function goUpgradeController(creep: Creep) {
 }
 
 export function goBuild(creep: Creep) {
+  if (creep.store.getUsedCapacity(RESOURCE_ENERGY) === 0) return false;
   var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
   if (targets.length) {
     if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
@@ -120,7 +123,27 @@ export function goBuild(creep: Creep) {
         visualizePathStyle: { stroke: "#ffffff" }
       });
     }
+    return true;
   }
+  return false;
+}
+
+export function goRepair(creep: Creep) {
+  if (creep.store.getUsedCapacity(RESOURCE_ENERGY) === 0) return false;
+  var targets = creep.room.find(FIND_MY_STRUCTURES, {
+    filter: (structure: Structure) => {
+      return structure.hits / structure.hitsMax < 1;
+    }
+  });
+  if (targets.length) {
+    if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(targets[0], {
+        visualizePathStyle: { stroke: "#ffffff" }
+      });
+    }
+    return true;
+  }
+  return false;
 }
 
 function findNode(nodes: Source[], limit: boolean) {
