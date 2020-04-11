@@ -133,7 +133,7 @@ export function goRepair(creep: Creep) {
   if (creep.store.getUsedCapacity(RESOURCE_ENERGY) === 0) return false;
   var targets = creep.room.find(FIND_STRUCTURES, {
     filter: (structure: Structure) => {
-      return structure.hits / structure.hitsMax < 1;
+      return structure.hits / structure.hitsMax < 0.2;
     }
   });
   if (targets.length) {
