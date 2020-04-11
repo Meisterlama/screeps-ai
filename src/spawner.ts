@@ -47,19 +47,19 @@ export function updatePop(roomId: string): void {
         if (
           trySpawnCreep(
             "builder",
-            [WORK, CARRY, MOVE],
+            [WORK, CARRY, CARRY, MOVE, MOVE],
             2 * controllerLevel,
             spawner
           )
         )
           break;
-        if (trySpawnCreep("pillager", [CARRY, CARRY, MOVE, MOVE], 1, spawner))
+        if (trySpawnCreep("pillager", [CARRY, CARRY, MOVE, MOVE], 0, spawner))
           break;
       case 1:
         if (
           trySpawnCreep(
             "harvester",
-            [WORK, CARRY, MOVE],
+            [WORK, CARRY, CARRY, MOVE, MOVE],
             3 * controllerLevel,
             spawner
           )
@@ -68,7 +68,7 @@ export function updatePop(roomId: string): void {
         if (
           trySpawnCreep(
             "upgrader",
-            [WORK, CARRY, MOVE],
+            [WORK, CARRY, CARRY, MOVE, MOVE],
             2 * controllerLevel,
             spawner
           )
@@ -81,3 +81,17 @@ export function updatePop(roomId: string): void {
     }
   }
 }
+
+// function countFlag(type: string): number {
+//   switch (type) {
+//     case "pillage":
+//       return _.filter(Game.flags, (flag: Flag) => {
+//         flag.color === COLOR_ORANGE ? true : false;
+//         return false;
+//       });
+//       break;
+//
+//     default:
+//       break;
+//   }
+// }

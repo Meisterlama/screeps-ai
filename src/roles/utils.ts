@@ -31,7 +31,8 @@ export function goStoreResource(
     filter: (structure: Structure) => {
       return (
         (structure.structureType == STRUCTURE_EXTENSION ||
-          structure.structureType == STRUCTURE_SPAWN) &&
+          structure.structureType == STRUCTURE_SPAWN ||
+          structure.structureType === STRUCTURE_CONTAINER) &&
         (structure.store.getFreeCapacity(resource) || 0) > 0
       );
     }
